@@ -45,7 +45,6 @@ class Player(pygame.sprite.Sprite):
 		else:
 			self.detector = 0
 			self.draw(sc)
-
 		if keys[pygame.K_LEFT]:
 			self.direction = 1
 			self.x -= self.speed
@@ -53,7 +52,8 @@ class Player(pygame.sprite.Sprite):
 			self.direction = 0
 			self.x += self.speed
 		if keys[pygame.K_UP]:
-			self.y -= self.speed
+			if self.y >= 20:
+				self.y -= self.speed
 		if keys[pygame.K_DOWN]:
 			self.y += self.speed
 
