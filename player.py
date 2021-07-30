@@ -50,14 +50,14 @@ class Player(pygame.sprite.Sprite):
 				self.direction = 1
 				self.x -= self.speed
 		if keys[pygame.K_RIGHT]:
-			if self.x <= WIDTH:
+			if self.x <= WIDTH - 59:
 				self.direction = 0
 				self.x += self.speed
 		if keys[pygame.K_UP]:
-			if self.y >= 20:
+			if self.y >= 25:
 				self.y -= self.speed
 		if keys[pygame.K_DOWN]:
-			if self.y <= HEIGHT:
+			if self.y <= HEIGHT - 186:
 				self.y += self.speed
 
 '''переключатель
