@@ -13,7 +13,7 @@ sc = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('FBMP')
 
 
-background = pygame.image.load('backgrounds//1.png')
+bg = [pygame.image.load('backgrounds//1.png'), pygame.image.load('backgrounds//2.png'), pygame.image.load('backgrounds//3.png')]
 #switch = Switch()
 
 n = Network(server_input, port)
@@ -29,7 +29,7 @@ while running:
 		if event.type == pygame.QUIT:
 			running = False
 	sc.fill(SKY)
-	sc.blit(background, [0,0])
+	sc.blit(bg[p.level], [0,0])
 #	switch.draw()
 	p.move(sc)
 	p2.draw(sc)
