@@ -8,6 +8,17 @@ import pickle
 server = "25.89.203.122"
 port = 4991
 
+choose = input("Вы уверены, что хотите оставить ip адрес и порт:" + server + ":" + str(port) + " без изменений?\nНапишите yes или no (Y or N): ")
+
+if choose.upper() == "Y" or choose.upper() == "YES":
+	pass 
+elif choose.upper() == "N" or choose.upper() == "NO":
+	server = input("Ввод ip:")
+	port = int(input("Ввод порта:"))
+else:
+	print("Ошибка")
+	sys.exit()
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 try:

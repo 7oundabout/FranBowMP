@@ -5,6 +5,7 @@ from network import Network
 from player import Player
 
 server_input = input("Введите ip:")
+port = int(input("Введите порт:"))
 
 pygame.init()
 pygame.mixer.init()
@@ -15,7 +16,7 @@ pygame.display.set_caption('FBMP')
 background = pygame.image.load('backgrounds//1.png')
 #switch = Switch()
 
-n = Network(server_input)
+n = Network(server_input, port)
 p = n.getP()
 clock = pygame.time.Clock()
 
