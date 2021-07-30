@@ -25,7 +25,7 @@ while running:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			running = False
-	sc.fill(BLACK)
+	sc.fill(SKY)
 	sc.blit(background, [0,0])
 #	switch.draw()
 	p.move(sc)
