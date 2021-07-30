@@ -15,7 +15,7 @@ class Player(pygame.sprite.Sprite):
 		self.speed = 4	
 		self.direction = player_direction
 		self.detector = player_detector
-		self.level = 0
+		self.level = 3
 
 	def draw(self, sc):
 		global img_counter
@@ -50,17 +50,22 @@ class Player(pygame.sprite.Sprite):
 			if self.x >= 0:
 				self.direction = 1
 				self.x -= self.speed
+			else:
+				if self.level >= 1:
+					self.level -= 1
+					self.x = WIDTH - 83
+				else:
+					pass
 		if keys[pygame.K_d]:
 			if self.x <= WIDTH - 59:
 				self.direction = 0
 				self.x += self.speed
 			else:
-				if self.level <= 2:
+				if self.level <= 3:
 					self.level += 1
 					self.x = 20
 				else:
-					self.level = 0
-					self.x = 20
+					pass
 		if keys[pygame.K_w]:
 			if self.y >= 25:
 				self.y -= self.speed
