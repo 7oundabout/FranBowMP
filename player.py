@@ -46,16 +46,19 @@ class Player(pygame.sprite.Sprite):
 			self.detector = 0
 			self.draw(sc)
 		if keys[pygame.K_LEFT]:
-			self.direction = 1
-			self.x -= self.speed
+			if self.x >= 0:
+				self.direction = 1
+				self.x -= self.speed
 		if keys[pygame.K_RIGHT]:
-			self.direction = 0
-			self.x += self.speed
+			if self.x <= WIDTH:
+				self.direction = 0
+				self.x += self.speed
 		if keys[pygame.K_UP]:
 			if self.y >= 20:
 				self.y -= self.speed
-		if keys[pygame.K_DOWN]:
-			self.y += self.speed
+		if keys[pygame.K_DOWN]
+			if self.y <= HEIGHT:
+				self.y += self.speed
 
 '''переключатель
 class Switch(pygame.sprite.Sprite):
