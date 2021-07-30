@@ -56,7 +56,7 @@ class Player(pygame.sprite.Sprite):
 		if keys[pygame.K_UP]:
 			if self.y >= 20:
 				self.y -= self.speed
-		if keys[pygame.K_DOWN]
+		if keys[pygame.K_DOWN]:
 			if self.y <= HEIGHT:
 				self.y += self.speed
 
