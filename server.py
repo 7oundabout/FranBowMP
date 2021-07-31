@@ -22,8 +22,14 @@ if ip == "ip":
 		open('ip-server.txt', 'a').write(data)
 
 
-	if save.upper() == "N":
+	elif save.upper() == "N":
 		print("Ip не был сохранён")
+	
+	
+	else:
+		print("Ошибка")
+		sys.exit()
+
 
 elif ip == "file":
 	print("Хорошо, ip сервера будет взят с файла ip-server.txt")

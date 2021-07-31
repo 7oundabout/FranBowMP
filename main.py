@@ -21,8 +21,13 @@ if ip == "ip":
 		open('ip-client.txt', 'a').write(data)
 	
 	
-	if save.upper() == "N":
+	elif save.upper() == "N":
 		print("Ip не был сохранён")
+		
+		
+	else:
+		print("Ошибка")
+		sys.exit()
 
 
 elif ip == "file":
