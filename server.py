@@ -93,7 +93,3 @@ while True:
 
 	start_new_thread(threaded_client, (conn, currentPlayer))
 	currentPlayer += 1
-
-=======
-	currentPlayer += 1
->>>>>>> 667f5aa91f1cf5ac36a6ed4e14fc8107e964eb6c

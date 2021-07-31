@@ -73,11 +73,3 @@ class Player(pygame.sprite.Sprite):
 			if self.y <= HEIGHT - 186:
 				self.y += self.speed
 
-'''переключатель
-class Switch(pygame.sprite.Sprite):
-	def __init__(self):
-		pygame.sprite.Sprite.__init__(self)
-
-	def draw(self):
-		pygame.draw.polygon(sc, BLUE, points=[(WIDTH - 50, HEIGHT // 2 - 30), (WIDTH - 20, HEIGHT // 2), (WIDTH - 50,HEIGHT // 2 + 30)])
-'''
