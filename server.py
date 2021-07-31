@@ -5,7 +5,7 @@ from settings import WIDTH, HEIGHT
 from player import Player
 import pickle
 import linecache
-print("Здравсствуйте. Это клиент сервера.")
+print("Здравствуйте. Это клиент сервера.")
 
 ip = input("Вы хотите ввести свой ip или хотите взять из файла? Напишите ip или file: ")
 
@@ -23,7 +23,7 @@ if ip == "ip":
 
 
 	if save.upper() == "N":
-		print("Ip не сохранён")
+		print("Ip не был сохранён")
 
 elif ip == "file":
 	print("Хорошо, ip сервера будет взят с файла ip-server.txt")

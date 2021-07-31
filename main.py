@@ -4,7 +4,7 @@ from settings import *
 from network import Network
 from player import Player
 import linecache
-print("Здравсствуйте. Это клиент игрока.")
+print("Здравствуйте. Это клиент игрока.")
 
 ip = input("Вы хотите ввести свой ip или хотите взять из файла? Напишите ip или file: ")
 
@@ -22,7 +22,7 @@ if ip == "ip":
 	
 	
 	if save.upper() == "N":
-		print("Ip не сохранён")
+		print("Ip не был сохранён")
 
 
 elif ip == "file":
