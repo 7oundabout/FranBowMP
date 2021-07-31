@@ -1,3 +1,9 @@
+import pygame
+
+bg = [pygame.image.load('backgrounds//1.png'), pygame.image.load('backgrounds//2.png'), pygame.image.load('backgrounds//3.png'), pygame.image.load('backgrounds//4.png'), pygame.image.load('backgrounds//5.png')]
+redis = pygame.image.load('sprites/objects_sprites/redis.png')
+
+
 WIDTH = 800
 HEIGHT = 400
 FPS = 30

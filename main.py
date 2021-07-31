@@ -3,6 +3,7 @@ import random
 from settings import *
 from network import Network
 from player import Player
+from objects import *
 
 server_input = input("Введите ip:")
 port = int(input("Введите порт:"))
@@ -12,12 +13,18 @@ pygame.mixer.init()
 sc = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('FBMP')
 
+#Переключение уровней
+class Levels():
+	def __init__(self):
+		pass
 
-bg = [pygame.image.load('backgrounds//1.png'), pygame.image.load('backgrounds//2.png'), pygame.image.load('backgrounds//3.png'), pygame.image.load('backgrounds//4.png'), pygame.image.load('backgrounds//5.png')]
-#switch = Switch()
+	def level1_draw(self):
+		r = Redis()
+		r.redis_draw(sc, p.x, p.y)		
 
 n = Network(server_input, port)
 p = n.getP()
+l = Levels()
 clock = pygame.time.Clock()
 
 running = True
@@ -30,9 +37,13 @@ while running:
 			running = False
 	sc.fill(SKY)
 	sc.blit(bg[p.level], [0,0])
-#	switch.draw()
+	if p.level == 2:
+		l.level1_draw()
+	else:
+		pass
 	p.move(sc)
-	p2.draw(sc)
+	if p.level == p2.level:
+		p2.draw(sc)
 	pygame.display.flip()
 
 
