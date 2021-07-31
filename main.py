@@ -3,21 +3,41 @@ import random
 from settings import *
 from network import Network
 from player import Player
-print("Здравсствуйте, вас приветствует NVORON production. Это клиент игрока.")
+import linecache
+print("Здравсствуйте. Это клиент игрока.")
 
 ip = input("Вы хотите ввести свой ip или хотите взять из файла? Напишите ip или file: ")
 
 if ip == "ip":
-	server_input = input("Введите ip:")
-	port = int(input("Введите порт:"))
+	input_ip = input("Введите ip: ")
+	server_input = ':'.join(input_ip.split(':')[:-1])
+	port = int(':'.join(input_ip.split(':')[-1:]))
+
+	save = input("Хотите сохранить ip? Напишите Y или N. ")
 	
+	if save.upper() == "Y":
+		print("Ip был сохранён в ip-client.txt")
+		data = '\n' + input_ip
+		open('ip-client.txt', 'a').write(data)
+	
+	
+	if save.upper() == "N":
+		print("Ip не сохранён")
+
+
 elif ip == "file":
 	print("Хорошо, ip сервера будет взят с файла ip-client.txt")
-	file = open('ip-client.txt', 'r')
-	data = file.read()
+	print("Выберите ip: ")
+	
+	f = open("ip-client.txt","r")
+	listing = f.read()
+	print(listing)
+	choose = int(input())
+	data = linecache.getline('ip-client.txt', choose)
 	server_input = ':'.join(data.split(':')[:-1])
 	port = int(':'.join(data.split(':')[-1:]))
-	print("Ip, к которому вы хотите присоединиться: "+data)
+	print("Ip, к которому вы хотите присоединиться: "+ data)
+	f.close()
 	
 else:
 	print("Ошибка")

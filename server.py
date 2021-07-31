@@ -4,40 +4,44 @@ import sys
 from settings import WIDTH, HEIGHT
 from player import Player
 import pickle
+import linecache
+print("Здравсствуйте. Это клиент сервера.")
 
-server = "25.89.203.122"
-port = 4991
+ip = input("Вы хотите ввести свой ip или хотите взять из файла? Напишите ip или file: ")
 
-print("Здравсствуйте, вас приветствует NVORON production. Это клиент сервера.")
+if ip == "ip":
+	input_ip = input("Введите ip: ")
+	server = ':'.join(input_ip.split(':')[:-1])
+	port = int(':'.join(input_ip.split(':')[-1:]))
 
-choose = input("Вы уверены, что хотите оставить ip адрес и порт:" + server + ":" + str(port) + " без изменений?\nНапишите yes или no (Y or N): ")
+	save = input("Хотите сохранить ip? Напишите Y или N. ")
 
-if choose.upper() == "Y" or choose.upper() == "YES":
-	pass
+	if save.upper() == "Y":
+		print("Ip был сохранён в ip-server.txt")
+		data = '\n' + input_ip
+		open('ip-server.txt', 'a').write(data)
 
-elif choose.upper() == "N" or choose.upper() == "NO":
-	ip = input("Вы хотите ввести свой ip или хотите взять из файла? Напишите ip или file: ")
-	
-	if ip == "ip":
-		server = input("Введите ip:")
-		port = int(input("Введите порт:"))
-	
-	elif ip == "file":
-		print("Хорошо, ip сервера будет взят с файла ip-server.txt")
-		file = open('ip-server.txt', 'r')
-		data = file.read()
-		server = ':'.join(data.split(':')[:-1])
-		port = int(':'.join(data.split(':')[-1:]))
-		print("Ip, к которому вы хотите присоединиться: "+data)
-	
-	else:
-		print("Ошибка")
-		sys.exit()
+
+	if save.upper() == "N":
+		print("Ip не сохранён")
+
+elif ip == "file":
+	print("Хорошо, ip сервера будет взят с файла ip-server.txt")
+	print("Выберите ip: ")
+
+	f = open("ip-server.txt","r")
+	listing = f.read()
+	print(listing)
+	choose = int(input())
+	data = linecache.getline('ip-server.txt', choose)
+	server = ':'.join(data.split(':')[:-1])
+	port = int(':'.join(data.split(':')[-1:]))
+	print("Ip вашего сервера: "+ data)
+	f.close()
 
 else:
 	print("Ошибка")
 	sys.exit()
-
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
