@@ -4,17 +4,47 @@ import sys
 from settings import WIDTH, HEIGHT
 from player import Player
 import pickle
+import linecache
+print("Здравствуйте. Это клиент сервера.")
 
-server = "25.89.203.122"
-port = 4991
+ip = input("Вы хотите ввести свой ip или хотите взять из файла? Напишите ip или file: ")
 
-choose = input("Вы уверены, что хотите оставить ip адрес и порт:" + server + ":" + str(port) + " без изменений?\nНапишите yes или no (Y or N): ")
+if ip == "ip":
+	input_ip = input("Введите ip: ")
+	server = ':'.join(input_ip.split(':')[:-1])
+	port = int(':'.join(input_ip.split(':')[-1:]))
 
-if choose.upper() == "Y" or choose.upper() == "YES":
-	pass 
-elif choose.upper() == "N" or choose.upper() == "NO":
-	server = input("Ввод ip:")
-	port = int(input("Ввод порта:"))
+	save = input("Хотите сохранить ip? Напишите Y или N. ")
+
+	if save.upper() == "Y":
+		print("Ip был сохранён в ip-server.txt")
+		data = '\n' + input_ip
+		open('ip-server.txt', 'a').write(data)
+
+
+	elif save.upper() == "N":
+		print("Ip не был сохранён")
+	
+	
+	else:
+		print("Ошибка")
+		sys.exit()
+
+
+elif ip == "file":
+	print("Хорошо, ip сервера будет взят с файла ip-server.txt")
+	print("Выберите ip: ")
+
+	f = open("ip-server.txt","r")
+	listing = f.read()
+	print(listing)
+	choose = int(input())
+	data = linecache.getline('ip-server.txt', choose)
+	server = ':'.join(data.split(':')[:-1])
+	port = int(':'.join(data.split(':')[-1:]))
+	print("Ip вашего сервера: "+ data)
+	f.close()
+	
 else:
 	print("Ошибка")
 	sys.exit()
@@ -63,3 +93,7 @@ while True:
 
 	start_new_thread(threaded_client, (conn, currentPlayer))
 	currentPlayer += 1
+
+=======
+	currentPlayer += 1
+>>>>>>> 667f5aa91f1cf5ac36a6ed4e14fc8107e964eb6c
