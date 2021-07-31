@@ -8,16 +8,37 @@ import pickle
 server = "25.89.203.122"
 port = 4991
 
+print("Здравсствуйте, вас приветствует NVORON production. Это клиент сервера.")
+
 choose = input("Вы уверены, что хотите оставить ip адрес и порт:" + server + ":" + str(port) + " без изменений?\nНапишите yes или no (Y or N): ")
 
 if choose.upper() == "Y" or choose.upper() == "YES":
-	pass 
+	pass
+
 elif choose.upper() == "N" or choose.upper() == "NO":
-	server = input("Ввод ip:")
-	port = int(input("Ввод порта:"))
+	ip = input("Вы хотите ввести свой ip или хотите взять из файла? Напишите ip или file: ")
+	
+	if ip == "ip":
+		server = input("Введите ip:")
+		port = int(input("Введите порт:"))
+	
+	elif ip == "file":
+		print("Хорошо, ip сервера будет взят с файла ip-server.txt")
+		file = open('ip-server.txt', 'r')
+		data = file.read()
+		server = ':'.join(data.split(':')[:-1])
+		port = int(':'.join(data.split(':')[-1:]))
+		print("Ip, к которому вы хотите присоединиться: "+data)
+	
+	else:
+		print("Ошибка")
+		sys.exit()
+
 else:
 	print("Ошибка")
 	sys.exit()
+
+
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 

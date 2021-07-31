@@ -39,14 +39,16 @@ class Player(pygame.sprite.Sprite):
 
 	def move(self, sc):
 		keys = pygame.key.get_pressed()
-		if keys[pygame.K_a] or keys[pygame.K_d] or keys[pygame.K_w] or keys[pygame.K_s]:
+		if keys[pygame.K_a] or keys[pygame.K_d] or keys[pygame.K_w] or keys[pygame.K_s] or keys[pygame.K_LEFT] or keys[pygame.K_RIGHT] or keys[pygame.K_UP] or keys[pygame.K_DOWN]:
 			self.detector = 1
 			img_counter =0
 			self.draw(sc)
 		else:
 			self.detector = 0
 			self.draw(sc)
-		if keys[pygame.K_a]:
+
+
+		if keys[pygame.K_a] or keys[pygame.K_LEFT]:
 			if self.x >= 0:
 				self.direction = 1
 				self.x -= self.speed
@@ -56,7 +58,9 @@ class Player(pygame.sprite.Sprite):
 					self.x = WIDTH - 83
 				else:
 					pass
-		if keys[pygame.K_d]:
+
+
+		if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
 			if self.x <= WIDTH - 59:
 				self.direction = 0
 				self.x += self.speed
@@ -66,18 +70,13 @@ class Player(pygame.sprite.Sprite):
 					self.x = 20
 				else:
 					pass
-		if keys[pygame.K_w]:
+
+
+		if keys[pygame.K_w] or keys[pygame.K_UP]:
 			if self.y >= 25:
 				self.y -= self.speed
-		if keys[pygame.K_s]:
+
+
+		if keys[pygame.K_s] or keys[pygame.K_DOWN]:
 			if self.y <= HEIGHT - 186:
 				self.y += self.speed
-
-'''переключатель
-class Switch(pygame.sprite.Sprite):
-	def __init__(self):
-		pygame.sprite.Sprite.__init__(self)
-
-	def draw(self):
-		pygame.draw.polygon(sc, BLUE, points=[(WIDTH - 50, HEIGHT // 2 - 30), (WIDTH - 20, HEIGHT // 2), (WIDTH - 50,HEIGHT // 2 + 30)])
-'''
