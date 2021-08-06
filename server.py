@@ -18,7 +18,7 @@ except socket.error as e:
 s.listen(2)
 print("Waiting for a connection, Server Started")
 
-players = [[WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False], [WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False]]
+players = [[WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 0], [WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 20]]
 
 def threaded_client(conn, player):
 	conn.send(pickle.dumps(players[player]))
@@ -36,8 +36,8 @@ def threaded_client(conn, player):
 					reply = players[0]
 				else:
 					reply = players[1]
-					print("Received: ", data)
-					print("Sending: ", reply)
+#					print("Received: ", data)
+#					print("Sending: ", reply)
 
 			conn.sendall(pickle.dumps(reply))
 		except:

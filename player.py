@@ -18,31 +18,38 @@ class Player(pygame.sprite.Sprite):
 	def move(self):
 		keys = pygame.key.get_pressed()
 		if keys[pygame.K_w] or keys[pygame.K_s] or keys[pygame.K_a] or keys[pygame.K_d]:
-			pygame.detector = True
+			self.detector = True
 		else:
-			pygame.detector = False
+			self.detector = False
 
 		if keys[pygame.K_w]:
 			self.rect.y -= self.speed
 		if keys[pygame.K_s]:
 			self.rect.y += self.speed
 		if keys[pygame.K_a]:
-			self.direction = False
+			self.direction = True
 			self.rect.x -= self.speed
 		if keys[pygame.K_d]:
-			self.direction = True
+			self.direction = False
 			self.rect.x += self.speed
 
 	def update(self):
 		if self.detector:
 			if self.direction:
-				if self.index < 15:
+				if self.index < 19:
 					self.index += 1
-					self.image = player_animation[self.index // 6]
+					self.image = player_animation[self.index // 4]
+				else:
+					self.index = 0
+
+
 			else:
-				if self.index < 35:
+				if self.index < 38 and self.index > 19:
 					self.index += 1
-					self.image = player_animation[self.index // 6]
+					self.image = player_animation[self.index // 4]
+				else:
+					self.index = 20
+
 		else:
 			if self.direction:
 				self.image = player_animation[10]
