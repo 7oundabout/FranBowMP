@@ -18,7 +18,7 @@ except socket.error as e:
 s.listen(2)
 print("Waiting for a connection, Server Started")
 
-players = [[WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 0], [WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 20]]
+players = [[WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 0, 3], [WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 0, 3]]
 
 def threaded_client(conn, player):
 	conn.send(pickle.dumps(players[player]))

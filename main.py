@@ -26,15 +26,15 @@ while running:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			running = False
-	sc.fill(BLACK)
+	sc.fill(SKY)
 	sc.blit(background, [0,0])
 #	switch.draw()
-	players[0].rect.x = p[0] ; players[0].rect.y = p[1] ; players[0].direction = p[2] ; players[0].detector = p[3] ; players[0].index = p[4]
-	players[1].rect.x = p2[0] ; players[1].rect.y = p2[1] ; players[1].direction = p2[2] ; players[1].detector = p2[3] ; players[1].index = p2[4]
+	players[0].rect.x = p[0] ; players[0].rect.y = p[1] ; players[0].direction = p[2] ; players[0].detector = p[3] ; players[0].index = p[4] ; players[0].level = p[5]
+	players[1].rect.x = p2[0] ; players[1].rect.y = p2[1] ; players[1].direction = p2[2] ; players[1].detector = p2[3] ; players[1].index = p2[4] ; players[1].level = p2[5]
 	players[0].move()
 	my_group.update()
 	my_group.draw(sc)
-	p[0] = players[0].rect.x ; p[1] = players[0].rect.y ; p[2] = players[0].direction ; p[3] = players[0].detector ; p[4] = players[0].index
+	p[0] = players[0].rect.x ; p[1] = players[0].rect.y ; p[2] = players[0].direction ; p[3] = players[0].detector ; p[4] = players[0].index ; p[5] = players[0].level
 	pygame.display.flip()
 
 

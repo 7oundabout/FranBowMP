@@ -14,6 +14,7 @@ class Player(pygame.sprite.Sprite):
 		self.rect.y = HEIGHT // 2 - 30
 		self.direction = False 
 		self.detector = False
+		self.level = 2
 
 	def move(self):
 		keys = pygame.key.get_pressed()
