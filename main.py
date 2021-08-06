@@ -13,14 +13,15 @@ pygame.display.set_caption('FBMP')
 background = pygame.image.load('backgrounds//1.png')
 #switch = Switch()
 
+players = [Player(), Player()]
+my_group = pygame.sprite.Group(players)
 n = Network()
 p = n.getP()
 clock = pygame.time.Clock()
-players = [Player(), Player()]
-my_group = pygame.sprite.Group(players)
 
 running = True
 while running:
+	print(p)
 	clock.tick(FPS)
 	p2 = n.send(p)
 
@@ -35,7 +36,7 @@ while running:
 	players[0].move()
 	p[0] = players[0].rect.x ; p[1] = players[0].rect.y ; p[2] = players[0].direction ; p[3] = players[0].detector
 	my_group.update()
-	my_group.draw(sc)
+	my_group.draw()
 	pygame.display.flip()
 
 
