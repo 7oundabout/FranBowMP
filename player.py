@@ -6,7 +6,7 @@ from settings import *
 class Player(pygame.sprite.Sprite):
 	def __init__(self):
 		pygame.sprite.Sprite.__init__(self)
-		self.index = 6
+		self.index = 0
 		self.image = player_animation[self.index]
 		self.rect = pygame.Rect(5, 5, 59, 186)
 		self.speed = 5
@@ -17,19 +17,19 @@ class Player(pygame.sprite.Sprite):
 
 	def move(self):
 		keys = pygame.key.get_pressed()
-		if keys[pygame.K_W] or keys[pygame.K_S] or keys[pygame.K_A] or keys[pygame.K_D]:
+		if keys[pygame.K_w] or keys[pygame.K_s] or keys[pygame.K_a] or keys[pygame.K_d]:
 			pygame.detector = True
 		else:
 			pygame.detector = False
 
-		if keys[pygame.K_W]:
+		if keys[pygame.K_w]:
 			self.rect.y -= self.speed
-		if keys[pygame.K_S]:
+		if keys[pygame.K_s]:
 			self.rect.y += self.speed
-		if keys[pygame.K_A]:
+		if keys[pygame.K_a]:
 			self.direction = False
 			self.rect.x -= self.speed
-		if keys[pygame.K_D]:
+		if keys[pygame.K_d]:
 			self.direction = True
 			self.rect.x += self.speed
 
