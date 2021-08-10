@@ -27,10 +27,16 @@ class Player(pygame.sprite.Sprite):
 			self.rect.y += self.speed
 		if keys[pygame.K_a]:
 			self.direction = True
-			self.rect.x -= self.speed
+			if self.rect.x < 5 and self.level == 0:
+				pass
+			else:
+				self.rect.x -= self.speed
 		if keys[pygame.K_d]:
 			self.direction = False
-			self.rect.x += self.speed
+			if self.rect.x > WIDTH - 74 and self.level == 4:
+				pass
+			else:
+				self.rect.x += self.speed
 
 	def update(self):
 		if self.detector:
