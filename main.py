@@ -10,6 +10,7 @@ pygame.init()
 pygame.mixer.init()
 sc = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('FBMP')
+pygame.display.set_icon(ico_game)
 platform_group = pygame.sprite.Group()
 players = [Player(), Player()]
 my_group = pygame.sprite.Group(players)
