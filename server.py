@@ -5,7 +5,7 @@ from settings import WIDTH, HEIGHT
 from player import Player
 import pickle
 
-server = "192.168.1.173"
+server = "192.168.1.172"
 port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,7 +18,7 @@ except socket.error as e:
 s.listen(2)
 print("Waiting for a connection, Server Started")
 
-players = [[WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 0, 3], [WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 0, 3]]
+players = [[WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 0, 0], [WIDTH // 2 - 30, HEIGHT // 2 - 30, False, False, 0, 0]]
 
 def threaded_client(conn, player):
 	conn.send(pickle.dumps(players[player]))

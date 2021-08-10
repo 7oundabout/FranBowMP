@@ -1,7 +1,5 @@
 import pygame
-from settings import *
-
-
+from settings import player_animation, WIDTH, HEIGHT
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self):
@@ -14,7 +12,7 @@ class Player(pygame.sprite.Sprite):
 		self.rect.y = HEIGHT // 2 - 30
 		self.direction = False 
 		self.detector = False
-		self.level = 2
+		self.level = 0
 
 	def move(self):
 		keys = pygame.key.get_pressed()
