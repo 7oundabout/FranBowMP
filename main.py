@@ -14,7 +14,6 @@ pygame.display.set_icon(ico_game)
 platform_group = pygame.sprite.Group()
 players = [Player(), Player()]
 my_group = pygame.sprite.Group(players)
-world_border_= pygame.sprite.Group()
 n = Network()
 p = n.getP()
 clock = pygame.time.Clock()
