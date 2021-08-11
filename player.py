@@ -22,9 +22,15 @@ class Player(pygame.sprite.Sprite):
 			self.detector = False
 
 		if keys[pygame.K_w]:
-			self.rect.y -= self.speed
+			if self.rect.y > 0:
+				self.rect.y -= self.speed
+			else:
+				pass
 		if keys[pygame.K_s]:
-			self.rect.y += self.speed
+			if self.rect.y < HEIGHT - 186:
+				self.rect.y += self.speed
+			else:
+				pass
 		if keys[pygame.K_a]:
 			self.direction = True
 			if self.rect.x < 5 and self.level == 0:
@@ -33,7 +39,7 @@ class Player(pygame.sprite.Sprite):
 				self.rect.x -= self.speed
 		if keys[pygame.K_d]:
 			self.direction = False
-			if self.rect.x > WIDTH - 74 and self.level == 4:
+			if self.rect.x > WIDTH - 74 and self.level == 5:
 				pass
 			else:
 				self.rect.x += self.speed
