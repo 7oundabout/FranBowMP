@@ -43,6 +43,14 @@ class Player(pygame.sprite.Sprite):
 				pass
 			else:
 				self.rect.x += self.speed
+				
+	def switch(self):
+		if self.rect.x > WIDTH - 59: #блок переключения на другой уровень
+			self.level += 1
+			self.rect.x = 0 #сброс позиции игрока
+		elif self.rect.x < 0:
+			self.rect.x = WIDTH - 59
+			self.level -= 1
 
 	def update(self):
 		if self.detector:
