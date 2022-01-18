@@ -15,3 +15,7 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 SKY = (135, 206, 235)
+
+platform_height = 20
+platform_width = 20
+platform_color = BLACK
