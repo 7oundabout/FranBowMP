@@ -1,5 +1,6 @@
 import pygame
 from settings import player_animation, WIDTH, HEIGHT
+from objects_initialization import *
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self):
@@ -48,9 +49,11 @@ class Player(pygame.sprite.Sprite):
 		if self.rect.x > WIDTH - 59: #блок переключения на другой уровень
 			self.level += 1
 			self.rect.x = 0 #сброс позиции игрока
+			platform_init(self.level)
 		elif self.rect.x < 0:
 			self.rect.x = WIDTH - 59
 			self.level -= 1
+			platform_init(self.level)
 
 	def update(self):
 		if self.detector:
