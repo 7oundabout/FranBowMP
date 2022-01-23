@@ -1,26 +1,28 @@
 import pygame
-from levels import *
 from objects import *
 
-
-pf_x = pf_y = 0
 platforms = [""]
-platform_group = pygame.sprite.Group()
+platform_group = pygame.sprite.Group() 
 
-def platform_init(lvl): #функция инициализации платформ
-	global pf_x
-	global pf_y
-	platform_group.empty() #сброс platform_group
-	platforms.clear() #очистка листа
-	pf_x = 0 ; pf_y = 0 #сброс pf_x, pf_y - позиций для инициализации
-	for line in levels_map[lvl]:
-		for symbol in line:
-			if symbol == "1":
-				pf = Platform(pf_x, pf_y)
-				platform_group.add(pf)
-				platforms.append(pf)
-			pf_x += platform_width
-		pf_y += platform_height
-		pf_x = 0
+class objects_initialization():
+	def __init__(self):
+		self.pf_x = 0
+		self.pf_y = 0
+		self.levels_map = None
+
+	def platform_init(self, lvl): #функция инициализации платформ
+		platform_group.empty() #сброс platform_group
+		platforms.clear() #очистка листа
+		self.pf_x = 0 ; self.pf_y = 0 #сброс pf_x, pf_y - позиций для инициализации
 		
+		for line in self.levels_map[lvl]:
+			for symbol in line:
+				if symbol == "1":
+					pf = Platform(self.pf_x, self.pf_y)
+					platform_group.add(pf)
+					platforms.append(pf)
+				self.pf_x += platform_width
+			self.pf_y += platform_height
+			self.pf_x = 0
+			
 

@@ -1,8 +1,7 @@
 import pygame
 from settings import player_animation, WIDTH, HEIGHT
-from objects_initialization import *
 
-class Player(pygame.sprite.Sprite):
+class player(pygame.sprite.Sprite):
 	def __init__(self):
 		pygame.sprite.Sprite.__init__(self)
 		self.index = 0
@@ -14,8 +13,9 @@ class Player(pygame.sprite.Sprite):
 		self.direction = False 
 		self.detector = False
 		self.level = 0
+		self.package = None
 
-	def move(self):
+	def keymove(self):
 		keys = pygame.key.get_pressed()
 		if keys[pygame.K_w] or keys[pygame.K_s] or keys[pygame.K_a] or keys[pygame.K_d]:
 			self.detector = True
@@ -23,37 +23,60 @@ class Player(pygame.sprite.Sprite):
 			self.detector = False
 
 		if keys[pygame.K_w]:
-			if self.rect.y > 0:
-				self.rect.y -= self.speed
-			else:
-				pass
+			self.move_up()
+		else:
+			pass
+
 		if keys[pygame.K_s]:
-			if self.rect.y < HEIGHT - 186:
-				self.rect.y += self.speed
-			else:
-				pass
+			self.move_down()
+		else:
+			pass
+
 		if keys[pygame.K_a]:
-			self.direction = True
-			if self.rect.x < 5 and self.level == 0:
-				pass
-			else:
-				self.rect.x -= self.speed
+			self.move_left()
+		else:
+			pass
+
 		if keys[pygame.K_d]:
-			self.direction = False
-			if self.rect.x > WIDTH - 74 and self.level == 5:
-				pass
-			else:
-				self.rect.x += self.speed
+			self.move_right()
+		else:
+			pass
+
+	def move_up(self):
+		if self.rect.y > 0:
+			self.rect.y -= self.speed
+		else:
+			pass
+	
+	def move_down(self):
+		if self.rect.y < HEIGHT - 186:
+			self.rect.y += self.speed
+		else:
+			pass
+	
+	def move_left(self):
+		self.direction = True
+		if self.rect.x < 5 and self.level == 0:
+			pass
+		else:
+			self.rect.x -= self.speed
+	
+	def move_right(self):
+		self.direction = False
+		if self.rect.x > WIDTH - 74 and self.level == 5:
+			pass
+		else:
+			self.rect.x += self.speed
 				
-	def switch(self):
+	def switch(self, initial_redirected):
 		if self.rect.x > WIDTH - 59: #блок переключения на другой уровень
 			self.level += 1
 			self.rect.x = 0 #сброс позиции игрока
-			platform_init(self.level)
+			initial_redirected.platform_init(self.level)
 		elif self.rect.x < 0:
 			self.rect.x = WIDTH - 59
 			self.level -= 1
-			platform_init(self.level)
+			initial_redirected.platform_init(self.level)
 
 	def update(self):
 		if self.detector:
