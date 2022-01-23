@@ -1,4 +1,4 @@
 # FranBowMP
 Fran Bow Multiplayer
 
-Ветка NVORON'а
+Новая стабильная ветка
