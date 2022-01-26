@@ -5,7 +5,7 @@ from settings import WIDTH, HEIGHT
 import pickle
 from levels import *
 
-server = "192.168.1.80"
+server = "192.168.1.172"
 port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -57,10 +57,17 @@ def threaded_client(conn, player):
 
 def packageInput(data_player):
 	if data_player != None:
-		character = list(levels_map[data_player[0]][data_player[1]]) 
-		character[data_player[2]] = "1"
-		"".join(character)
-		levels_map[data_player[0]][data_player[1]] = character
+		if data_player[0] == False:
+			character = list(levels_map[data_player[1]][data_player[2]]) 
+			character[data_player[3]] = "1"
+			"".join(character)
+			levels_map[data_player[1]][data_player[2]] = character
+
+		elif data_player[0] == True:
+			character = list(levels_map[data_player[1]][data_player[2]]) 
+			character[data_player[3]] = "-"
+			"".join(character)
+			levels_map[data_player[1]][data_player[2]] = character
 
 currentPlayer = 0
 while True:

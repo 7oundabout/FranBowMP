@@ -25,6 +25,7 @@ class mainrun():
 		self.key = False
 		self.package = False
 		self.column = None ; self.row = None
+		self.action = None
 		self.first_run()
 		initial.grid_init()
 		while self.running == True:
@@ -40,12 +41,18 @@ class mainrun():
 
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if self.key == True:
+					if event.button == 1:
+						self.action = True
+					elif event.button == 3:
+						self.action = False
+
 					pos = pygame.mouse.get_pos()
 					self.column = pos[0] // platform_width
 					self.row = pos[1] // platform_height
 					self.package = True
 				else:
 					pass
+
 
 		sc.fill(SKY) #закрашивание фона
 		players[p[0][6]].rect.x = p[0][0] ; players[p[0][6]].rect.y = p[0][1] ; players[p[0][6]].direction = p[0][2] ; players[p[0][6]].detector = p[0][3] ; players[p[0][6]].index = p[0][4] ; players[p[0][6]].level = p[0][5] ; players[p[0][6]].package = p[0][7]  #передача полученных переменных в локалку p
@@ -76,13 +83,13 @@ class mainrun():
 			if self.key == True:
 				grid_group.draw(sc)
 				if self.package == True:
-					p[0][7] = [players[p[0][6]].level, self.row, self.column]
+					p[0][7] = [self.action, players[p[0][6]].level, self.row, self.column]
 					self.package = False
+					self.action = None
 			else:
 				pass
 		else:
 			p[0][7] = None
-
 		p[0][0] = players[p[0][6]].rect.x ; p[0][1] = players[p[0][6]].rect.y ; p[0][2] = players[p[0][6]].direction ; p[0][3] = players[p[0][6]].detector ; p[0][4] = players[p[0][6]].index ; p[0][5] = players[p[0][6]].level ; p[0][7] = p[0][7] ; p[0][8] = None #передача измененной локалки p на сервер
 		pygame.display.flip() #обновление экрана
 	
