@@ -13,7 +13,6 @@ class player(pygame.sprite.Sprite):
 		self.direction = False 
 		self.detector = False
 		self.level = 0
-		self.package = None
 
 	def keymove(self):
 		keys = pygame.key.get_pressed()
@@ -41,6 +40,11 @@ class player(pygame.sprite.Sprite):
 			self.move_right()
 		else:
 			pass
+
+		if keys[pygame.K_q]:
+			return True
+		else:
+			return False
 
 	def move_up(self):
 		if self.rect.y > 0:

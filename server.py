@@ -34,10 +34,19 @@ def threaded_client(conn, player):
 				print("Disconnnected")
 				break
 			else:
+				if players[player][7] == None:
+					pass
+				else:
+					packageInput(players[player][7])
+					players[player][7] = None
+					players[0][8] = levels_map
+					players[1][8] = levels_map
+
 				if player == 1:
 					reply = players[0]
 				else:	
 					reply = players[1]
+
 #					print("Received: ", data)
 #					print("Sending: ", reply)
 			conn.sendall(pickle.dumps(reply))
@@ -45,6 +54,13 @@ def threaded_client(conn, player):
 			break
 	print("Lost connection")
 	conn.close()
+
+def packageInput(data_player):
+	if data_player != None:
+		character = list(levels_map[data_player[0]][data_player[1]]) 
+		character[data_player[2]] = "1"
+		"".join(character)
+		levels_map[data_player[0]][data_player[1]] = character
 
 currentPlayer = 0
 while True:

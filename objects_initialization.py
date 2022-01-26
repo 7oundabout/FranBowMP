@@ -2,6 +2,7 @@ import pygame
 from objects import *
 
 platform_group = pygame.sprite.Group() 
+grid_group = pygame.sprite.Group()
 
 class objects_initialization():
 	def __init__(self):
@@ -20,5 +21,9 @@ class objects_initialization():
 				self.pf_x += platform_width
 			self.pf_y += platform_height
 			self.pf_x = 0
-			
-
+	
+	def grid_init(self):
+		for x in range(0, WIDTH, platform_width):
+			for y in range(0, HEIGHT, platform_height):
+				grid_object = GridOb(x, y)
+				grid_group.add(grid_object)
